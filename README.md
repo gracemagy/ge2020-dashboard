@@ -5,6 +5,9 @@
 **missing part**
 
 roadmap of key events (search for 3-10 events during sengkang contest rally)
+format:
+-date
+-event headline (please try to make it as short as possible to save space :)
 
 **bugs to fix**
 
