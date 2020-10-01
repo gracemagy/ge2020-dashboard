@@ -9,6 +9,9 @@ var x = d3.scaleBand()
           .padding(0.4);
 var y = d3.scaleLinear()
           .range([height, 0]);
+		  
+
+var tooltip = d3.select("body").append("div").attr("class", "toolTip");
           
 // append the svg object to the body of the page
 // append a 'group' element to 'svg'
@@ -47,6 +50,18 @@ d3.csv("data/population.csv", function(data) {
   x.domain(data.map(function(d) { return d.age; }));
   y.domain([0, d3.max(data, function(d) { return d.population; })]);
 
+      // add the y Axis
+  //svg.append("g")
+  //    .call(d3.axisLeft(y));
+
+    // add the x Axis
+  svg.append("g")
+      .style("font", "14px Poppins")
+      .attr('class', 'axis')
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x))
+      .call(g => g.select(".domain").remove());  
+
   // append the rectangles for the bar chart
   svg.selectAll(".bar")
       .data(data)
@@ -59,18 +74,21 @@ d3.csv("data/population.csv", function(data) {
         h${x.bandwidth() - 2 * rx}
         a${rx},${ry} 0 0 1 ${rx},${ry}
         v${height - y(item.population) - ry}
-        h${-(x.bandwidth())}Z`);
+        h${-(x.bandwidth())}Z`)
+	   .on("mousemove", function(d){
+            tooltip
+			  //.style("visibility", "visible")
+                .style("left", d3.event.pageX - 50 + "px")
+                .style("top", d3.event.pageY - 100 + "px")
+                .style("display", "inline-block")
+                .html((d.age) +":"+ "<br>" +(d.population));
+        })
+    	.on("mouseout", function(d){tooltip.style("display", "none");});
+		
 
-  // add the y Axis
-  //svg.append("g")
-  //    .call(d3.axisLeft(y));
 
-    // add the x Axis
-  svg.append("g")
-      .style("font", "14px Poppins")
-      .attr('class', 'axis')
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x))
-      .call(g => g.select(".domain").remove());
+  
+
+ 
 
 });
