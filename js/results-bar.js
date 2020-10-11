@@ -16,11 +16,7 @@
 	.domain([0, 100])
 	.range([0, width]);
 
-	var thresholdScale = d3.scaleThreshold()
-	.domain([52])
-	.range(['#246fed', '#de435b']);
-
-	var myData = d3.range(0, 100, 3);
+	var myData = d3.range(0, 52,2);
 
 	svg
 		.selectAll('whatever')
@@ -31,7 +27,5 @@
 		return linearScale(d);
 	})
 	.attr('width', 23)
-	.attr('height', 50)
-	.style('fill', function(d) {
-		return thresholdScale(d);
-	});
+	.attr('height', 35)
+	.style('fill', '#246fed');
