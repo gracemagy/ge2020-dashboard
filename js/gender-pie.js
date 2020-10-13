@@ -1,23 +1,24 @@
 var backgroundArc = d3.arc()
-  .innerRadius(30)
+  .innerRadius(27)
   .outerRadius(40)
   .cornerRadius(10)
   .startAngle(0)
   .endAngle(Math.PI*2);
   
 var mainArc = d3.arc()
-  .innerRadius(30)
+  .innerRadius(27)
   .outerRadius(40)
   .cornerRadius(10)
   .startAngle(0)
   .endAngle(function(d) { return d/100*Math.PI* 2 });
   
-var data = [47.88]
+//voters gender male 69680. female 74290
+var data = [48.40]
   
-var svg1 = d3.select("#vote-pie").append("svg")
+var svg6 = d3.select("#demographic-gender").append("svg")
   .attr("viewBox", "0 0 100 100");
   
-var charts = svg1.selectAll("g")
+var charts = svg6.selectAll("g")
   .data(data)
   .enter()
   .append("g")
@@ -31,9 +32,10 @@ charts.append("path")
 
 charts.append("path")
   .attr("d", mainArc) 
-  .attr("fill","#de435b");
+  .attr("fill","#96aff8");
 
-let legend = svg1
+/*
+let legend = svg6
     .selectAll('.legend')
     .data(data)
     .enter()
@@ -54,3 +56,4 @@ legend
     .text(function(d) {
         return '52' + '%';
     });
+  */
