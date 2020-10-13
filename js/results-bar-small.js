@@ -1,6 +1,6 @@
 	//var width = $('div#results-bar').width()
 	var width = 800,
-    	height = 45;
+    	height = 100;
 
     //var svg = d3.select("#results-bar")
     //	.append("svg")
@@ -30,7 +30,7 @@
 	x.domain([0,100])
 	y.domain(data.map(function(d){return d.Party;}));
 	
-  	var svg = d3.select("#results-bar")
+  	var svg = d3.select("#results-bar-small")
   	.append("svg")
   	//.attr('height', '60px')
 	//.attr('width', '100%')
@@ -45,7 +45,7 @@
 		.attr("width",function(d) {return x(d.votes);})
 		.attr("y", function (d) { return y(d.Party);})
 		.attr("height", y.bandwidth())
-		.attr('rx', 7)
+		.attr('rx', 12)
 		.style("fill",function(d){ return d.votes < 50 ? "#de435b" : "#246fed"});
 		
 	
