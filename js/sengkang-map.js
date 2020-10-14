@@ -50,7 +50,7 @@
 								.style("opacity", .9);
 						tooltip2.text(d.properties.ED_DESC)
 								.style("left", (d3.event.pageX + 5) + "px")
-								.style("top", (d3.event.pageY - 60) + "px");
+								.style("top", (d3.event.pageY - 50) + "px");
 								})
 				.on("mouseout", function(d) {
 					d3.select(this)
