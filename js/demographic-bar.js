@@ -1,7 +1,7 @@
   // set the dimensions and margins of the graph
 var margin = {top: 0, right: 0, bottom: 30, left: 0},
     width = 500 - margin.left - margin.right,
-    height = 280 - margin.top - margin.bottom;
+    height = 255 - margin.top - margin.bottom;
 
 // set the ranges
 var x = d3.scaleBand()
@@ -54,7 +54,7 @@ d3.csv("data/population.csv", function(data) {
   svg.selectAll(".bar")
       .data(data)
       .enter().append("path")
-      .attr("fill", function(d){ return d.population > 30000 ? "#246fed" : "#96aff8"})
+      .attr("fill", function(d){ return d.population > 24000 ? "#246fed" : "#96aff8"})
       .attr("d", item => `
         M${x(item.age)},${y(item.population) + ry}
         a${rx},${ry} 0 0 1 ${rx},${-ry}
@@ -67,7 +67,7 @@ d3.csv("data/population.csv", function(data) {
 			  //.style("visibility", "visible")
                 .attr("class", "tooltip1")
                 .style("left", d3.event.pageX - 50 + "px")
-                .style("top", d3.event.pageY - 100 + "px")
+                .style("top", d3.event.pageY - 70 + "px")
                 .style("display", "inline-block")
                 .html("Population:"+ "<br>" +(d.population));
         })
@@ -82,7 +82,7 @@ d3.csv("data/population.csv", function(data) {
       .style("font", "14px Poppins")
       .attr('class', 'axis')
       //.attr("transform", "translate(0," + height + ")")
-      .attr("transform", "translate(0, 255)")
+      .attr("transform", "translate(0, 230)")
       .call(d3.axisBottom(x))
       .call(g => g.select(".domain").remove());  
 
