@@ -33,7 +33,6 @@ charts.append("path")
   .attr("fill","#246fed")
   .on("mousemove", function(d){
             tooltip
-        //.style("visibility", "visible")
                 .attr("class", "tooltip1")
                 .style("left", d3.event.pageX - 50 + "px")
                 .style("top", d3.event.pageY - 70 + "px")
@@ -55,27 +54,3 @@ charts.append("path")
                 .html("Population:" + "<br>" + "69,680");
         })
       .on("mouseout", function(d){tooltip.style("display", "none");});
-
-/*
-let legend = svg6
-    .selectAll('.legend')
-    .data(data)
-    .enter()
-    .append('g')
-    .attr('class', 'legend')
-    .attr('transform', function(d, i) {
-        return "translate("+(i*100+50)+",45)";
-    });
-
-legend
-    .append('text')
-    .attr('x', 1)
-    .attr('y', 1)
-    .attr('text-anchor', 'middle')
-    .attr('dominant-baseline', 'central')
-    .style('fill', '#246fed')
-    .style("font-weight", "800")
-    .text(function(d) {
-        return '52' + '%';
-    });
-  */

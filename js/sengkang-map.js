@@ -7,7 +7,6 @@
 
     var svg2 = d3.select("#sengkang-map").append("svg")
             .attr("viewBox", "0 0 " + (width) + " " + (height))
-            //.style("max-width", "700px")
 
    d3.json("data/electoral-boundary-dataset.geo.json", function (error, mapData) {
         var features = mapData.features;
