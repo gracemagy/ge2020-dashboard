@@ -1,14 +1,10 @@
-	//var width = $('div#results-bar').width()
+	//results bar for large screen
 	var width = 800,
     	height = 45;
+	
+	var tooltip = d3.select("body").append("div");
 
-    //var svg = d3.select("#results-bar")
-    //	.append("svg")
-    //	.attr("viewBox", "0 0 800 50")
-  	//	.append("g");
-	
-	
-	var data = [{"Party":"WP","votes":52.12},{"Party":"PAP","votes":47.88}]
+	var data = [{"Party":"WP","votes":52.12,"counts": "60,217"},{"Party":"PAP","votes":47.88,"counts": "55,319"}]
 
 	var y = d3.scaleBand()
 			.range([height,0])
@@ -32,8 +28,6 @@
 	
   	var svg = d3.select("#results-bar")
   	.append("svg")
-  	//.attr('height', '60px')
-	//.attr('width', '100%')
     .attr('preserveAspectRatio', 'xMinYMin meet')
     .attr("viewBox", '0 0 ' + (width) + ' ' + (height));
 	
@@ -46,6 +40,15 @@
 		.attr("y", function (d) { return y(d.Party);})
 		.attr("height", y.bandwidth())
 		.attr('rx', 7)
-		.style("fill",function(d){ return d.votes < 50 ? "#de435b" : "#246fed"});
+		.style("fill",function(d){ return d.votes < 50 ? "#de435b" : "#246fed"})
+		.on("mousemove", function(d){
+            tooltip
+                .attr("class", "tooltip3")
+                .style("left", d3.event.pageX - 50 + "px")
+                .style("top", d3.event.pageY - 50 + "px")
+                .style("display", "inline-block")
+                .html("Votes: "+(d.counts));
+        })
+    	.on("mouseout", function(d){tooltip.style("display", "none");});
 		
 	

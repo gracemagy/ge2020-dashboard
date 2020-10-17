@@ -7,7 +7,6 @@
 
     var svg2 = d3.select("#sengkang-map").append("svg")
             .attr("viewBox", "0 0 " + (width) + " " + (height))
-            //.style("max-width", "700px")
 
    d3.json("data/electoral-boundary-dataset.geo.json", function (error, mapData) {
         var features = mapData.features;
@@ -50,7 +49,7 @@
 								.style("opacity", .9);
 						tooltip2.text(d.properties.ED_DESC)
 								.style("left", (d3.event.pageX + 5) + "px")
-								.style("top", (d3.event.pageY - 60) + "px");
+								.style("top", (d3.event.pageY - 50) + "px");
 								})
 				.on("mouseout", function(d) {
 					d3.select(this)
